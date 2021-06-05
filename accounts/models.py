@@ -1,9 +1,8 @@
 from django.db import models
 
 class User(models.Model):
-    name = models.CharField(max_length=32)
     email = models.EmailField()
-    password = models.CharField(max_length=64)
+    password = models.CharField(max_length=256)
     created_at = models.DateTimeField(auto_now_add=True)
     level = models.CharField( max_length=8,
         choices=(
