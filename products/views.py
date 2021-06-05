@@ -4,12 +4,15 @@ from django.views.generic.edit import FormView
 from .models import Product
 from .forms import RegisterForm
 from orders.forms import RegisterForm as OrderForm
+from django.utils.decorators import method_decorator
+from accounts.decorators import login_required
 
 class ProductList(ListView):
     model = Product
     template_name = "product.html"
     context_object_name = 'product_list'
 
+@method_decorator(login_required, name='dispatch')
 class ProductRegister(FormView):
     template_name = "product_register.html"
     form_class = RegisterForm
